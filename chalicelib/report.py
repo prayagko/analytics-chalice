@@ -9,7 +9,6 @@ def get_users_list(oid, user_type):
         user = mongo.teachers.find({'institution': oid}, {'createdAt': 0, '__v': 0})
     if user_type == 'guardian':
         user = mongo.guardians.find({'institution': oid}, {'createdAt': 0, '__v': 0})
-    # user_list = map(lambda x: x, user)
     return list(user)
 
 
@@ -46,39 +45,5 @@ def get_activity_report(activity_list, interval, oid):
             teacher_report['analytics'] = analytics
         report.append(teacher_report)
     return report
-
-    # print(teacher_list)
-    # activity_list = []
-    # for activity in activities:
-    #     if activity == 'moment':
-    #         for teacher in teacher_list:
-    #             if 'linking' in teacher:
-    #                 user_id = teacher['linking'].get('user')
-    #             else:
-    #                 user_id = None
-    #             count = mongo.moments.count_documents(
-    #                 {'createdAt': {'$gte': interval[0], '$lt': interval[1]},
-    #                  'createdBy': user_id})
-    #             teacher_activity = {teacher['name']: count}
-    #             activity_list.append(teacher_activity)
-    #     else:
-    #         activity_id = get_activity_id(activity)
-    #         for teacher in teacher_list:
-    #             count = mongo.activities.count_documents(
-    #                 {'createdAt': {'$gte': interval[0], '$lt': interval[1]},
-    #                  'createdBy': teacher['_id'], 'type': activity_id})
-    #             teacher_activity = {teacher['name']: count}
-    #             activity_list.append(teacher_activity)
-    # return activity_list
-
-
-
-
-
-
-
-
-
-
 
 
