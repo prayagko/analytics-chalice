@@ -1,4 +1,4 @@
 .chalice/
 env/
-__pycache__
-.idea
+__pycache__/
+.idea/
